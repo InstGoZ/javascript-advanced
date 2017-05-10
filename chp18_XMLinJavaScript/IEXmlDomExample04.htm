@@ -6,14 +6,13 @@
 <body>
     <p>This example is known to work only in Internet Explorer.</p>
     <script type="text/javascript">
-    
+
         function createDocument(){
+            if (typeof arguments.callee.activeXString != "string"){
                 var versions = ["MSXML2.DOMDocument.6.0", "MSXML2.DOMDocument.3.0",
-                                "MSXML2.DOMDocument"],
-                    i, len;
-                                
-        
-                for (i=0,len=versions.length; i < len; i++){
+                    "MSXML2.DOMDocument"];
+
+                for (var i=0,len=versions.length; i < len; i++){
                     try {
                         var xmldom = new ActiveXObject(versions[i]);
                         arguments.callee.activeXString = versions[i];
@@ -23,7 +22,7 @@
                     }
                 }
             }
-        
+
             return new ActiveXObject(arguments.callee.activeXString);
         }
     
