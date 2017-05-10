@@ -8,12 +8,11 @@
     <script type="text/javascript">
     
         function createDocument(){
+            if (typeof arguments.callee.activeXString != "string"){
                 var versions = ["MSXML2.DOMDocument.6.0", "MSXML2.DOMDocument.3.0",
-                                "MSXML2.DOMDocument"],
-                    i, len;
-                                
+                                "MSXML2.DOMDocument"];
         
-                for (i=0,len=versions.length; i < len; i++){
+                for (var i=0,len=versions.length; i < len; i++){
                     try {
                         var xmldom = new ActiveXObject(versions[i]);
                         arguments.callee.activeXString = versions[i];
